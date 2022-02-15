@@ -86,4 +86,3 @@ common
 | participant| meeting participant id |integer|
 | date_start| when meeting will start |integer|
 | date_end| when meeting will end |integer|
-# calendar
