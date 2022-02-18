@@ -61,8 +61,10 @@ class BookingForm extends Model
     {
         if ($book = Booking::find()->andWhere(['or', ['inviter' => [$this->inviter, $this->participant]], ['participant' =>
                 [$this->inviter, $this->participant]]])
-            ->andWhere(['or', ['BETWEEN', 'date_start', $this->date_start, $this->date_end], ['BETWEEN',
-                'date_end', $this->date_start, $this->date_end]])->exists()) {
+            ->andWhere(['or', ['BETWEEN', 'date_start', $this->date_start, $this->date_end], ['BETWEEN', 'date_end', $this->date_start, $this->date_end]])
+            ->orWhere(['or',['and', ['<', 'date_start', $this->date_start], ['>', 'date_end', $this->date_start]],['<', 'date_start', $this->date_end], ['>', 'date_end', $this->date_end]])
+
+            ->exists()) {
             $this->addError('date',
                 "These dates are already booked.");
         }
