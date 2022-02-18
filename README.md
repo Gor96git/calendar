@@ -38,7 +38,7 @@ TODOs
 
 DIRECTORY STRUCTURE
 -------------------
-common
+    common
     config/              contains shared configurations
     controllers/         contains console controllers (commands)
     migrations/          contains database migrations
@@ -54,7 +54,7 @@ common
 # Routes
 
 ###### Login: *POST*
-[index](http://localhost:21080/login)
+[login](http://localhost:21080/login)
 ###### Index: *GET*
 [index](http://localhost:21080/bookings)
 ###### View: *GET*

@@ -59,8 +59,7 @@ class BookingForm extends Model
 
     public function validateAvailability($attr)
     {
-        if ($book = Booking::find()
-            ->andWhere(['or', ['inviter' => [$this->inviter, $this->participant]], ['participant' =>
+        if ($book = Booking::find()->andWhere(['or', ['inviter' => [$this->inviter, $this->participant]], ['participant' =>
                 [$this->inviter, $this->participant]]])
             ->andWhere(['or', ['BETWEEN', 'date_start', $this->date_start, $this->date_end], ['BETWEEN',
                 'date_end', $this->date_start, $this->date_end]])->exists()) {

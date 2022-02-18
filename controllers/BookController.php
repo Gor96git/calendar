@@ -9,12 +9,10 @@ use app\repositories\BookingRepository;
 use app\services\BookingService;
 use Yii;
 use yii\base\Model;
-use yii\filters\auth\HttpBasicAuth;
-use yii\filters\auth\HttpBearerAuth;
 use yii\filters\AccessControl;
+use yii\filters\auth\HttpBearerAuth;
 use yii\filters\VerbFilter;
 use yii\rest\Controller;
-use yii\web\Response;
 
 class BookController extends Controller
 {
@@ -33,20 +31,20 @@ class BookController extends Controller
 
     public function behaviors()
     {
-     $access = [
+        $access = [
             'access' => [
-                'class' => AccessControl::className(),
+                'class' => AccessControl::class,
                 'only' => ['logout'],
                 'rules' => [
                     [
-                        'actions' => ['logout','create','update','get','index'],
+                        'actions' => ['logout', 'create', 'update', 'get', 'index'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
                 ],
             ],
             'verbs' => [
-                'class' => VerbFilter::className(),
+                'class' => VerbFilter::class,
                 'actions' => [
                     'logout' => ['post'],
                     'index' => ['get'],
@@ -60,7 +58,7 @@ class BookController extends Controller
             ['bearerAuth' => [
                 'class' => HttpBearerAuth::class,
                 'except' => ['login']
-            ]],$access
+            ]], $access
         );
     }
 

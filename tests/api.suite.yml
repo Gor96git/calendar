@@ -1,0 +1,9 @@
+actor: ApiTester
+modules:
+    enabled:
+        - REST:
+              url: http://localhost:21080/
+              depends: Yii2
+              part: JSON
+              configFile: 'config/test.php'
+        - \Helper\Api
